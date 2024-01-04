@@ -1,0 +1,63 @@
+.current-conditions{
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  background-color: #FBFAEA;
+  color: #2E3C47;
+  border-radius: 0 5px 5px 0;
+  margin-top: 10px;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 1);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 1);
+}
+
+.city{
+  font-size: 70px;
+  font-weight: 900;
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.conditions{
+  display: flex;
+  font-weight: 500;
+  flex-direction: row;
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.conditions-details {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 3;
+  font-size: 14px;
+  margin-top: 20px;
+
+  &-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    background-color: #82C6D4;
+    padding: 4px;
+  }
+
+  &-value{
+    font-weight: bold;
+  }
+}
+
+
+.chance-percent{
+  font-weight: bold;
+  font-size: 80px;
+  align-self: center;
+  margin-left: 20px;
+}
+
+.description{
+  margin: 20px;
+  font-weight: 600;
+}
