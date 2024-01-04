@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import Chart from 'chart.js/auto';
 import {ChartConfiguration} from "chart.js";
+import Chart from "chart.js/auto";
 
 @Component({
-  selector: 'app-wind-speed',
+  selector: 'app-sea-temperature',
   standalone: true,
   imports: [],
-  templateUrl: './wind-speed.component.html',
-  styleUrl: './wind-speed.component.scss'
+  templateUrl: './sea-temperature.component.html',
+  styleUrl: './sea-temperature.component.scss'
 })
-export class WindSpeedComponent implements OnInit {
+export class SeaTemperatureComponent  implements OnInit {
   public chart: any;
 
   ngOnInit(): void {
@@ -21,8 +21,8 @@ export class WindSpeedComponent implements OnInit {
     const data = {
       labels: labels,
       datasets: [{
-        label: 'Prędkość wiatru',
-        data: [15, 29, 37, 42, 40, 45, 43],
+        label: 'Temperatura morza',
+        data: [3, 3, 3, 3, 3, 3, 2.9],
         fill: false,
         borderColor: '#F4873C',
         tension: 0.1
@@ -50,7 +50,7 @@ export class WindSpeedComponent implements OnInit {
           y: {
             title: {
               display: true,
-              text: 'Km/h',
+              text: '°C',
               color: '#FBFAEA'
             },
             grid: {
@@ -72,6 +72,7 @@ export class WindSpeedComponent implements OnInit {
       }
     };
 
-    this.chart = new Chart("wind-speed-chart", config);
+    this.chart = new Chart("sea-temperature-chart", config);
   }
 }
+
