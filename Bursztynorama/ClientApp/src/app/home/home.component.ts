@@ -4,6 +4,7 @@ import {CurrentConditionsComponent} from "../current-conditions/current-conditio
 import {WindSpeedComponent} from "../wind-speed/wind-speed.component";
 import {AirTemperatureComponent} from "../air-temperature/air-temperature.component";
 import {SeaTemperatureComponent} from "../sea-temperature/sea-temperature.component";
+import {WindDirectionComponent} from "../wind-direction/wind-direction.component";
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,8 @@ import {SeaTemperatureComponent} from "../sea-temperature/sea-temperature.compon
     CurrentConditionsComponent,
     WindSpeedComponent,
     AirTemperatureComponent,
-    SeaTemperatureComponent
+    SeaTemperatureComponent,
+    WindDirectionComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'

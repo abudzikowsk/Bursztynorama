@@ -1,0 +1,106 @@
+.wind-direction-container {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  color: #FBFAEA;
+  padding-top: 20px;
+  font-size: 11px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.direction{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon{
+  &--n{
+    transform: rotate(0deg);
+  }
+  &--nne{
+    transform: rotate(22.5deg);
+  }
+  &--ne{
+    transform: rotate(45deg);
+  }
+  &--ene{
+    transform: rotate(67.5deg);
+  }
+  &--e{
+    transform: rotate(90deg);
+  }
+  &--ese{
+    transform: rotate(112.5deg);
+  }
+  &--se{
+    transform: rotate(135deg);
+  }
+  &--sse{
+    transform: rotate(157.5deg);
+  }
+  &--s{
+    transform: rotate(180deg);
+  }
+  &--ssw{
+    transform: rotate(202.5deg);
+  }
+  &--sw{
+    transform: rotate(225deg);
+  }
+  &--wsw{
+    transform: rotate(247.5deg);
+  }
+  &--w{
+    transform: rotate(270deg);
+  }
+  &--wnw{
+    transform: rotate(292.5deg);
+  }
+  &--nw{
+    transform: rotate(315deg);
+  }
+  &--nnw{
+    transform: rotate(337.5deg);
+  }
+  &--n{
+    transform: rotate(360deg);
+  }
+}
+
+.date{
+  margin-top: 5px;
+}
+
+.chart-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  margin: 20px;
+}
+
+.gg-arrow-left-o {
+  margin-right: 20px;
+  width: 9%;
+  cursor: pointer;
+  color: #FBFAEA;
+}
+
+.gg-arrow-right-o {
+  margin-left: 20px;
+  width: 9%;
+  cursor: pointer;
+  color: #FBFAEA;
+}
+
+.arrow-grayed {
+  color: #A9A9A9;
+  cursor: default;
+}
