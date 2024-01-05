@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import Chart from 'chart.js/auto';
 import {ChartConfiguration} from "chart.js";
+import {getChartConfig} from "../config/chart.config";
 
 @Component({
   selector: 'app-wind-speed',
@@ -29,48 +30,7 @@ export class WindSpeedComponent implements OnInit {
       }]
     };
 
-    const config: ChartConfiguration = {
-      type: 'line',
-      data: data,
-      options: {
-        scales: {
-          x: {
-            title: {
-              display: true,
-              text: 'Data',
-              color: '#FBFAEA',
-            },
-            grid: {
-              color: '#FBFAEA'
-            },
-            ticks: {
-              color: '#FBFAEA'
-            }
-          },
-          y: {
-            title: {
-              display: true,
-              text: 'Km/h',
-              color: '#FBFAEA'
-            },
-            grid: {
-              color: '#FBFAEA'
-            },
-            ticks: {
-              color: '#FBFAEA'
-            }
-          }
-        },
-        plugins: {
-          legend: {
-            display: false,
-            labels: {
-              color: '#FBFAEA'
-            }
-          }
-        }
-      }
-    };
+    const config = getChartConfig(data);
 
     this.chart = new Chart("wind-speed-chart", config);
   }

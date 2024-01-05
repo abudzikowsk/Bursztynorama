@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {RouterOutlet} from "@angular/router";
 import {ChartConfiguration} from "chart.js";
 import Chart from "chart.js/auto";
+import {getChartConfig} from "../config/chart.config";
 
 @Component({
   selector: 'app-air-temperature',
@@ -32,49 +33,7 @@ export class AirTemperatureComponent implements OnInit {
       }]
     };
 
-    // @ts-ignore
-    const config: ChartConfiguration = {
-      type: 'line',
-      data: data,
-      options: {
-        scales: {
-          x: {
-            title: {
-              display: true,
-              text: 'Data',
-              color: '#FBFAEA',
-            },
-            grid: {
-              color: '#FBFAEA'
-            },
-            ticks: {
-              color: '#FBFAEA'
-            }
-          },
-          y: {
-            title: {
-              display: true,
-              text: '°C',
-              color: '#FBFAEA'
-            },
-            grid: {
-              color: '#FBFAEA'
-            },
-            ticks: {
-              color: '#FBFAEA'
-            }
-          }
-        },
-        plugins: {
-          legend: {
-            display: false,
-            labels: {
-              color: '#FBFAEA'
-            }
-          }
-        }
-      }
-    };
+    const config = getChartConfig(data);
 
     this.chart = new Chart("air-temperature-chart", config);
   }
