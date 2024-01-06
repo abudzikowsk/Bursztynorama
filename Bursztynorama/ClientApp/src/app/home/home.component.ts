@@ -5,7 +5,7 @@ import {WindSpeedComponent} from "../wind-speed/wind-speed.component";
 import {AirTemperatureComponent} from "../air-temperature/air-temperature.component";
 import {SeaTemperatureComponent} from "../sea-temperature/sea-temperature.component";
 import {WindDirectionComponent} from "../wind-direction/wind-direction.component";
-import {AirGaugeComponent} from "../air-gauge/air-gauge.component";
+import {AirTemperatureGaugeComponent} from "../air-temperature-gauge/air-temperature-gauge.component";
 
 @Component({
   selector: 'app-home',
@@ -17,7 +17,7 @@ import {AirGaugeComponent} from "../air-gauge/air-gauge.component";
     AirTemperatureComponent,
     SeaTemperatureComponent,
     WindDirectionComponent,
-    AirGaugeComponent
+    AirTemperatureGaugeComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'

@@ -2,20 +2,20 @@ import {AfterViewInit, Component} from '@angular/core';
 import {RadialGauge} from "canvas-gauges";
 
 @Component({
-  selector: 'app-air-gauge',
+  selector: 'app-air-temperature-gauge',
   standalone: true,
   imports: [],
-  templateUrl: './air-gauge.component.html',
-  styleUrl: './air-gauge.component.scss'
+  templateUrl: './air-temperature-gauge.component.html',
+  styleUrl: './air-temperature-gauge.component.scss'
 })
-export class AirGaugeComponent implements AfterViewInit{
+export class AirTemperatureGaugeComponent implements AfterViewInit{
   ngAfterViewInit(): void {
     const gauge = new RadialGauge({
       renderTo: 'gauge-area',
       width: 300,
       height: 300,
       units: "°C",
-      title: "Temperature",
+      title: "Temperatura powietrza",
       valueBox: false,
       minValue: -50,
       maxValue: 50,
