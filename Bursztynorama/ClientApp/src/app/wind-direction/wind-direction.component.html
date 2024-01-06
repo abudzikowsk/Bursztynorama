@@ -1,31 +1,37 @@
 <div class="chart-container">
-  <i (click)="scrollLeft()" class="gg-arrow-left-o" [ngClass]="{'arrow-grayed': isLeftArrowGrayedOut}"></i>
-  <div #windDirectionContainer class="wind-direction-container" (scroll)="checkScrollEnd($event)">
-    @for (direction of data; track direction.id){
-      <div class="direction">
-        <img [ngClass]="{
-                        'icon--n': direction.direction.toLowerCase() === 'n',
-                        'icon--nne': direction.direction.toLowerCase() === 'nne',
-                        'icon--ne': direction.direction.toLowerCase() === 'ne',
-                        'icon--ene': direction.direction.toLowerCase() === 'ene',
-                        'icon--e': direction.direction.toLowerCase() === 'e',
-                        'icon--ese': direction.direction.toLowerCase() === 'ese',
-                        'icon--se': direction.direction.toLowerCase() === 'se',
-                        'icon--sse': direction.direction.toLowerCase() === 'sse',
-                        'icon--s': direction.direction.toLowerCase() === 's',
-                        'icon--ssw': direction.direction.toLowerCase() === 'ssw',
-                        'icon--sw': direction.direction.toLowerCase() === 'sw',
-                        'icon--wsw': direction.direction.toLowerCase() === 'wsw',
-                        'icon--w': direction.direction.toLowerCase() === 'w',
-                        'icon--wnw': direction.direction.toLowerCase() === 'wnw',
-                        'icon--nw': direction.direction.toLowerCase() === 'nw',
-                        'icon--nnw': direction.direction.toLowerCase() === 'nnw'
-                    }"
-          class="icon" ngSrc="/assets/icons/wind-direction-icon2.png" alt="icon" height="80" width="80">
-        <p>{{ direction.direction }}</p>
-        <p class="date">{{ direction.date }}</p>
-      </div>
-    }
+  <div class="container-row">
+    <p class="chart-title">Kierunek wiatru</p>
+    <p class="conditions-details">N</p>
   </div>
-  <i (click)="scrollRight()" class="gg-arrow-right-o" [ngClass]="{'arrow-grayed': isRightArrowGrayedOut}"></i>
+  <div class="chart-content">
+    <i (click)="scrollLeft()" class="gg-arrow-left-o" [ngClass]="{'arrow-grayed': isLeftArrowGrayedOut}"></i>
+    <div #windDirectionContainer class="wind-direction-container" (scroll)="checkScrollEnd($event)">
+      @for (direction of data; track direction.id){
+        <div class="direction">
+          <img [ngClass]="{
+                          'icon--n': direction.direction.toLowerCase() === 'n',
+                          'icon--nne': direction.direction.toLowerCase() === 'nne',
+                          'icon--ne': direction.direction.toLowerCase() === 'ne',
+                          'icon--ene': direction.direction.toLowerCase() === 'ene',
+                          'icon--e': direction.direction.toLowerCase() === 'e',
+                          'icon--ese': direction.direction.toLowerCase() === 'ese',
+                          'icon--se': direction.direction.toLowerCase() === 'se',
+                          'icon--sse': direction.direction.toLowerCase() === 'sse',
+                          'icon--s': direction.direction.toLowerCase() === 's',
+                          'icon--ssw': direction.direction.toLowerCase() === 'ssw',
+                          'icon--sw': direction.direction.toLowerCase() === 'sw',
+                          'icon--wsw': direction.direction.toLowerCase() === 'wsw',
+                          'icon--w': direction.direction.toLowerCase() === 'w',
+                          'icon--wnw': direction.direction.toLowerCase() === 'wnw',
+                          'icon--nw': direction.direction.toLowerCase() === 'nw',
+                          'icon--nnw': direction.direction.toLowerCase() === 'nnw'
+                      }"
+            class="icon" ngSrc="/assets/icons/wind-direction-icon2.png" alt="icon" height="80" width="80">
+          <p>{{ direction.direction }}</p>
+          <p class="date">{{ direction.date }}</p>
+        </div>
+      }
+    </div>
+    <i (click)="scrollRight()" class="gg-arrow-right-o" [ngClass]="{'arrow-grayed': isRightArrowGrayedOut}"></i>
+  </div>
 </div>

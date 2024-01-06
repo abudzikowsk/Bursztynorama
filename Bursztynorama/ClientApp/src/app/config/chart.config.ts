@@ -16,7 +16,7 @@ export function getChartConfig(data: any): ChartConfiguration {
             }
           },
           grid: {
-            color: '#FBFAEA',
+            color: '#FBFAEA'
           },
           ticks: {
             color: '#FBFAEA',
@@ -49,7 +49,10 @@ export function getChartConfig(data: any): ChartConfiguration {
         legend: {
           display: false,
           labels: {
-            color: '#FBFAEA'
+            color: '#FBFAEA',
+            font: {
+              family: "Montserrat, sans-serif"
+            }
           }
         }
       }

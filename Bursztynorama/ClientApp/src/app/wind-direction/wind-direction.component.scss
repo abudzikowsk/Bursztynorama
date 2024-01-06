@@ -80,10 +80,15 @@
 
 .chart-container{
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   width: 40%;
   margin: 20px;
+}
+
+.chart-content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .gg-arrow-left-o {
@@ -103,4 +108,27 @@
 .arrow-grayed {
   color: #A9A9A9;
   cursor: default;
+}
+
+.chart-title{
+  font-size: 30px;
+  font-weight: 600;
+  color: #FBFAEA;
+}
+
+.container-row{
+  font-size: 30px;
+  font-weight: 600;
+  color: #FBFAEA;
+  border-top: 2px solid #FBFAEA;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.conditions-details{
+  font-size: 20px;
+  align-self: center;
+  color: #82C6D4;
 }
