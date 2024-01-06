@@ -66,7 +66,9 @@ export class AirTemperatureGaugeComponent implements AfterViewInit{
       colorNeedleCircleInner: "#FBFAEA",
       colorNeedleCircleInnerEnd: "#FBFAEA",
       colorValueBoxRect: "#2E3C47",
-      colorValueBoxRectEnd: "#2E3C47"
+      colorValueBoxRectEnd: "#2E3C47",
+      fontNumbers: "Montserrat, sans-serif",
+      fontTitle: "Montserrat, sans-serif",
     }).draw();
 
     gauge.value = -2.3;

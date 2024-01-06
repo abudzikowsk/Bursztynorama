@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AirGaugeComponent } from './air-gauge.component';
+import { WindSpeedGaugeComponent } from './wind-speed-gauge.component';
 
-describe('AirGaugeComponent', () => {
-  let component: AirGaugeComponent;
-  let fixture: ComponentFixture<AirGaugeComponent>;
+describe('WindSpeedGaugeComponent', () => {
+  let component: WindSpeedGaugeComponent;
+  let fixture: ComponentFixture<WindSpeedGaugeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AirGaugeComponent]
+      imports: [WindSpeedGaugeComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(AirGaugeComponent);
+    fixture = TestBed.createComponent(WindSpeedGaugeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
