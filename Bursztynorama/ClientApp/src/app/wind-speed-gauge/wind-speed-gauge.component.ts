@@ -12,17 +12,23 @@ export class WindSpeedGaugeComponent implements AfterViewInit{
   ngAfterViewInit(): void {
     const gauge = new LinearGauge({
       renderTo: 'wind-speed-gauge-area',
-      width: 400,
-      height: 150,
+      title: "Prędkość wiatru",
+      units: "km/h",
+      width: 150,
+      height: 400,
       minValue: 0,
       maxValue: 160,
+      valueBox: false,
       majorTicks: [
         "0",
         "20",
         "40",
         "60",
         "80",
-        "100"
+        "100",
+        "120",
+        "140",
+        "160"
       ],
       minorTicks: 10,
       strokeTicks: true,
@@ -51,6 +57,8 @@ export class WindSpeedGaugeComponent implements AfterViewInit{
       fontNumbers: "Montserrat, sans-serif",
       fontTitle: "Montserrat, sans-serif",
       value: 75,
+      colorTitle: "#FBFAEA",
+      colorUnits: "#FBFAEA",
     }).draw();
   }
   value: number = 75;
