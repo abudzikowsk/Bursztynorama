@@ -8,6 +8,7 @@ import {WindDirectionComponent} from "../wind-direction/wind-direction.component
 import {AirTemperatureGaugeComponent} from "../air-temperature-gauge/air-temperature-gauge.component";
 import {WindSpeedGaugeComponent} from "../wind-speed-gauge/wind-speed-gauge.component";
 import {MoonPhaseComponent} from "../moon-phase/moon-phase.component";
+import {MapComponent} from "../map/map.component";
 
 @Component({
   selector: 'app-home',
@@ -22,6 +23,7 @@ import {MoonPhaseComponent} from "../moon-phase/moon-phase.component";
     AirTemperatureGaugeComponent,
     WindSpeedGaugeComponent,
     MoonPhaseComponent,
+    MapComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
