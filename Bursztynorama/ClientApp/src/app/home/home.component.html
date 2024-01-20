@@ -1,10 +1,12 @@
 <app-navigation></app-navigation>
-<app-current-conditions></app-current-conditions>
-<app-wind-speed></app-wind-speed>
-<app-air-temperature></app-air-temperature>
-<app-sea-temperature></app-sea-temperature>
-<app-wind-direction></app-wind-direction>
-<app-air-temperature-gauge></app-air-temperature-gauge>
-<app-wind-speed-gauge></app-wind-speed-gauge>
-<app-moon-phase></app-moon-phase>
-<app-map></app-map>
+<div class="container">
+  <app-current-conditions class="current-conditions"></app-current-conditions>
+  <app-map class="map"></app-map>
+  <app-wind-speed class="wind-speed"></app-wind-speed>
+  <app-sea-temperature class="sea-temperature"></app-sea-temperature>
+  <app-air-temperature class="air-temperature"></app-air-temperature>
+  <div class="under-map-container">
+    <app-wind-direction></app-wind-direction>
+    <app-moon-phase></app-moon-phase>
+  </div>
+</div>

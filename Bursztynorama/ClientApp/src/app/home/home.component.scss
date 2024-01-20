@@ -1,0 +1,41 @@
+.container {
+  display: grid;
+  grid-template-columns: 40% 57%;
+  grid-template-rows: auto;
+  grid-gap: 20px;
+  grid-template-areas:
+    "current-conditions map"
+    "wind-speed map"
+    "air-temperature under-map-container"
+    "sea-temperature under-map-container"
+}
+
+.current-conditions {
+  grid-area: current-conditions;
+}
+
+.map {
+  grid-area: map;
+}
+
+.air-temperature {
+  grid-area: air-temperature;
+}
+
+.sea-temperature {
+  grid-area: sea-temperature;
+}
+
+.wind-speed {
+  grid-area: wind-speed;
+}
+
+.wind-direction {
+  grid-area: wind-direction;
+}
+
+.under-map-container{
+  grid-area: under-map-container;
+  display: flex;
+  flex-direction: column;
+}

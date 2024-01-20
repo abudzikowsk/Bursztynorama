@@ -4,12 +4,15 @@
 }
 
 .title{
+  font-size: 30px;
+  font-weight: 600;
+  margin: 20px;
   color: #FBFAEA;
-  align-self: center;
+  border-top: 2px solid #FBFAEA;
+  padding-top: 20px;
 }
 
 .chart-container{
-  width: 40%;
   color: #FBFAEA;
   display: flex;
   flex-direction: column;
