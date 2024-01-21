@@ -1,4 +1,5 @@
 ﻿using Bursztynorama.Database.Entities;
+using Bursztynorama.Database.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace Bursztynorama.Database.Repositories;
@@ -12,9 +13,12 @@ public class WeatherHistoricalDataRepository
         this.applicationDbContext = applicationDbContext; 
     }
 
-    public async Task<WeatherData[]> GetAll()
+    public async Task<WeatherData[]> GetAllByCity(Cities city)
     {
-        return await applicationDbContext.WeatherHistoricalData.OrderByDescending(i => i.Date).ToArrayAsync();
+        return await applicationDbContext.WeatherHistoricalData
+            .Where(i => i.City == city)
+            .OrderByDescending(i => i.Date)
+            .ToArrayAsync();
     }
 
     public async Task Create(WeatherData weatherData)
