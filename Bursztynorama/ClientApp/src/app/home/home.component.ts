@@ -12,6 +12,7 @@ import {MapComponent} from "../map/map.component";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {WeatherDataResponse} from "../models/weather-data.response";
 import {Subject} from "rxjs";
+import {FooterComponent} from "../footer/footer.component";
 
 @Component({
   selector: 'app-home',
@@ -27,7 +28,8 @@ import {Subject} from "rxjs";
     WindSpeedGaugeComponent,
     MoonPhaseComponent,
     MapComponent,
-    HttpClientModule
+    HttpClientModule,
+    FooterComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
