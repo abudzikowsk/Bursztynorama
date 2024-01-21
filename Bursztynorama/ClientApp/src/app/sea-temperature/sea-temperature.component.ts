@@ -22,6 +22,7 @@ export class SeaTemperatureComponent  implements OnInit {
       const labels = data.map(x => x.date);
       const dataPoints = data.map(x => x.seaTemperature);
       this.currentSeaTemperature = dataPoints[dataPoints.length - 1];
+      this.chart?.destroy();
       this.createChart(labels, dataPoints);
     });
   }

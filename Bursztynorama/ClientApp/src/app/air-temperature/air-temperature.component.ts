@@ -25,6 +25,7 @@ export class AirTemperatureComponent implements OnInit {
       const labels = data.map(x => x.date);
       const dataPoints = data.map(x => x.airTemperature);
       this.currentTemperature = dataPoints[dataPoints.length - 1];
+      this.chart?.destroy();
       this.createChart(labels, dataPoints);
     });
   }

@@ -1,7 +1,7 @@
 <app-navigation></app-navigation>
 <div class="container">
   <app-current-conditions class="current-conditions" [data]="city"></app-current-conditions>
-  <app-map class="map"></app-map>
+  <app-map class="map" (cityIdChangedEvent)="changeCity($event)"></app-map>
   <app-wind-speed class="wind-speed" [data]="data"></app-wind-speed>
   <app-sea-temperature class="sea-temperature" [data]="data"></app-sea-temperature>
   <app-air-temperature class="air-temperature" [data]="data"></app-air-temperature>

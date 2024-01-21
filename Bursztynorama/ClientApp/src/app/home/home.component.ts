@@ -51,4 +51,14 @@ export class HomeComponent implements OnInit{
       });
   }
 
+
+  changeCity(cityId: string){
+    this.httpClient.get<WeatherDataResponse[]>('api/WeatherData/' + cityId)
+      .subscribe((data) => {
+        this.data.next(data);
+        const latestData = data[data.length - 1];
+        this.moonPhase.next(latestData.moonPhase);
+        this.city.next(latestData.city);
+      });
+  }
 }

@@ -21,6 +21,7 @@ export class WindSpeedComponent implements OnInit {
       const labels = data.map(x => x.date);
       const dataPoints = data.map(x => x.windSpeed);
       this.currentWindSpeed = dataPoints[dataPoints.length - 1];
+      this.chart?.destroy();
       this.createChart(labels, dataPoints);
     });
   }
