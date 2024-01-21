@@ -17,7 +17,7 @@ public class WeatherHistoricalDataRepository
     {
         return await applicationDbContext.WeatherHistoricalData
             .Where(i => i.City == city)
-            .OrderByDescending(i => i.Date)
+            .OrderBy(i => i.Date)
             .ToArrayAsync();
     }
 
@@ -30,7 +30,7 @@ public class WeatherHistoricalDataRepository
 
     public async Task DeleteOldData()
     {
-        var oldData = await applicationDbContext.WeatherHistoricalData.Where(o => o.Date < DateTime.Today.AddDays(-30)).ToArrayAsync();
+        var oldData = await applicationDbContext.WeatherHistoricalData.Where(o => o.Date < DateTime.Today.AddDays(-7)).ToArrayAsync();
         applicationDbContext.WeatherHistoricalData.RemoveRange(oldData);
         await applicationDbContext.SaveChangesAsync();
     }

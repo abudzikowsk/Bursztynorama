@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ChartConfiguration} from "chart.js";
 import Chart from "chart.js/auto";
 import {getChartConfig} from "../config/chart.config";
+import {Observable} from "rxjs";
+import {WeatherDataResponse} from "../models/weather-data.response";
 
 @Component({
   selector: 'app-sea-temperature',
@@ -11,19 +13,25 @@ import {getChartConfig} from "../config/chart.config";
   styleUrl: './sea-temperature.component.scss'
 })
 export class SeaTemperatureComponent  implements OnInit {
+  @Input() public data!: Observable<WeatherDataResponse[]>;
   public chart: any;
+  public currentSeaTemperature: number = 0;
 
   ngOnInit(): void {
-    this.createChart();
+    this.data.subscribe((data) => {
+      const labels = data.map(x => x.date);
+      const dataPoints = data.map(x => x.seaTemperature);
+      this.currentSeaTemperature = dataPoints[dataPoints.length - 1];
+      this.createChart(labels, dataPoints);
+    });
   }
 
-  createChart(){
-    const labels = ["01.01", "02.01", "03.01", "04.01", "05.01", "06.01", "07.01"];
+  createChart(labels: string[], dataPoints: number[]){
     const data = {
       labels: labels,
       datasets: [{
         label: 'Temperatura morza',
-        data: [3, 3, 3, 3, 3, 3, 2.9],
+        data: dataPoints,
         fill: false,
         borderColor: '#F4873C',
         tension: 0.1

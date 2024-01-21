@@ -4,7 +4,6 @@ using Bursztynorama.Filters;
 using Bursztynorama.Jobs;
 using Bursztynorama.Services;
 using Hangfire;
-using Hangfire.Dashboard;
 using Hangfire.Storage.SQLite;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,6 +24,10 @@ builder.Services.AddHangfireServer();
 builder.Services.AddScoped<GetWeatherDataJob>();
 builder.Services.AddScoped<DeleteOldWeatherDataJob>();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSpaStaticFiles(configuration =>
+{
+    configuration.RootPath = "ClientApp/build";
+});
 
 var app = builder.Build();
 
@@ -58,11 +61,21 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller}/{action=Index}/{id?}");
+app.UseEndpoints(opts =>
+{
+    opts.MapControllerRoute(
+        name: "default",
+        pattern: "{controller}/{action=Index}/{id?}");
+});
 
-app.MapFallbackToFile("index.html");
+app.UseSpa(spa =>
+{
+    spa.Options.SourcePath = "ClientApp";
+    if (app.Environment.IsDevelopment())
+    {
+        spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
+    }
+});
 
 app.UseGetWeatherDataJob();
 app.UseDeleteOldWeatherDataJob();

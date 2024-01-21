@@ -3,7 +3,8 @@
 public class WeatherDataResponse
 {
 	public int Id { get; set; }
-	public DateTime Date { get; set; }
+	public string Date { get; set; }
+	public string City { get; set; }
 	public double AirTemperature { get; set; }
 	public double WindSpeed { get; set; }
 	public string WindDirection { get; set; }

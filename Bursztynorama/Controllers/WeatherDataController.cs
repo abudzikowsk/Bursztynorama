@@ -29,11 +29,12 @@ public class WeatherDataController : ControllerBase
             mappedData.Add(new WeatherDataResponse
             {
                 Id = d.Id,
-                Date = d.Date,
-                AirTemperature = d.AirTemperature,
+                Date = d.Date.ToString("dd/MM hh:mm"),
+                City = d.City.ToString(),
+                AirTemperature = Math.Round(d.AirTemperature, 1),
                 WindDirection = d.WindDirection,
-                WindSpeed = d.WindSpeed,
-                SeaTemperature = d.SeaTemperature.HasValue ? d.SeaTemperature.Value : 0,
+                WindSpeed = Math.Round(d.AirTemperature),
+                SeaTemperature = d.SeaTemperature.HasValue ? Math.Round(d.SeaTemperature.Value, 1) : 0,
                 MoonPhase = d.MoonPhase
             });
         }

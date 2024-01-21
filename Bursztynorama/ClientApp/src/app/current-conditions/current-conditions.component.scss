@@ -25,6 +25,7 @@
   margin-right: 20px;
   margin-left: 20px;
   margin-top: 20px;
+  filter: blur(1rem);
 }
 
 .conditions-details {
@@ -59,4 +60,14 @@
 .description{
   margin: 20px;
   font-weight: 600;
+  filter: blur(1rem);
+}
+
+
+.comming-soon  {
+  position: absolute;
+  top: 270px;
+  left: 20px;
+  font-size: 40px;
+  font-weight: 300;
 }

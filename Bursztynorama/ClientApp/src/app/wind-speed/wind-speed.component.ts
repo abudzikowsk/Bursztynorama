@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import Chart from 'chart.js/auto';
 import {ChartConfiguration} from "chart.js";
 import {getChartConfig} from "../config/chart.config";
+import {Observable} from "rxjs";
+import {WeatherDataResponse} from "../models/weather-data.response";
 
 @Component({
   selector: 'app-wind-speed',
@@ -11,19 +13,24 @@ import {getChartConfig} from "../config/chart.config";
   styleUrl: './wind-speed.component.scss'
 })
 export class WindSpeedComponent implements OnInit {
+  @Input() public data!: Observable<WeatherDataResponse[]>;
   public chart: any;
-
+  public currentWindSpeed: number = 0;
   ngOnInit(): void {
-    this.createChart();
+      this.data.subscribe((data) => {
+      const labels = data.map(x => x.date);
+      const dataPoints = data.map(x => x.windSpeed);
+      this.currentWindSpeed = dataPoints[dataPoints.length - 1];
+      this.createChart(labels, dataPoints);
+    });
   }
 
-  createChart(){
-    const labels = ["01.01", "02.01", "03.01", "04.01", "05.01", "06.01", "07.01"];
+  createChart(labels: string[], dataPoints: number[]){
     const data = {
       labels: labels,
       datasets: [{
         label: 'Prędkość wiatru',
-        data: [15, 29, 37, 42, 40, 45, 43],
+        data: dataPoints,
         fill: false,
         borderColor: '#F4873C',
         tension: 0.1

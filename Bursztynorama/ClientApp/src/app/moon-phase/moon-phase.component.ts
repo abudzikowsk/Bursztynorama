@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Observable} from "rxjs";
+import {WeatherDataResponse} from "../models/weather-data.response";
 
 @Component({
   selector: 'app-moon-phase',
@@ -7,8 +9,15 @@ import { Component } from '@angular/core';
   templateUrl: './moon-phase.component.html',
   styleUrl: './moon-phase.component.scss'
 })
-export class MoonPhaseComponent {
+export class MoonPhaseComponent implements OnInit {
+  @Input() public data!: Observable<number>;
   moonPhase = 1;
+
+  ngOnInit(): void {
+    this.data.subscribe((data) => {
+      this.moonPhase = data;
+    });
+  }
 
   getMoonPhaseFileName(moonPhase: number): string {
     switch (moonPhase) {
