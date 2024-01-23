@@ -29,7 +29,7 @@ public class WeatherDataController : ControllerBase
             mappedData.Add(new WeatherDataResponse
             {
                 Id = d.Id,
-                Date = d.Date.ToString("dd/MM hh:mm"),
+                Date = d.Date.ToString("dd/MM HH:mm"),
                 City = d.City.ToString(),
                 AirTemperature = Math.Round(d.AirTemperature, 1),
                 WindDirection = d.WindDirection,

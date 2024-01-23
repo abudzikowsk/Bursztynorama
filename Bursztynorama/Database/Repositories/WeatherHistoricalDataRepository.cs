@@ -30,7 +30,8 @@ public class WeatherHistoricalDataRepository
 
     public async Task DeleteOldData()
     {
-        var oldData = await applicationDbContext.WeatherHistoricalData.Where(o => o.Date < DateTime.Today.AddDays(-7)).ToArrayAsync();
+        var oldData = await applicationDbContext.WeatherHistoricalData
+            .Where(o => o.Date < DateTime.Today.AddDays(-7)).ToArrayAsync();
         applicationDbContext.WeatherHistoricalData.RemoveRange(oldData);
         await applicationDbContext.SaveChangesAsync();
     }

@@ -20,6 +20,13 @@ export class WindDirectionComponent implements AfterViewInit {
   @ViewChild('windDirectionContainer') windDirectionContainer!: ElementRef;
   isLeftArrowGrayedOut = false;
   isRightArrowGrayedOut = true;
+  public currentWindDirection: string = "";
+
+  ngOnInit(): void {
+    this.data.subscribe((data) => {
+      this.currentWindDirection = data[data.length - 1].windDirection;
+    });
+  }
 
   ngAfterViewInit(): void {
       this.windDirectionContainer.nativeElement.scrollLeft = this.windDirectionContainer.nativeElement.scrollWidth;

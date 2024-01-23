@@ -65,6 +65,10 @@ export class MapComponent implements AfterViewInit{
         //@ts-ignore
         this.cityIdChangedEvent.emit(e.originalEvent.target.title);
       });
-    })
+    });
+
+    setTimeout(() => {
+      map.invalidateSize();
+    }, 0);
   }
 }

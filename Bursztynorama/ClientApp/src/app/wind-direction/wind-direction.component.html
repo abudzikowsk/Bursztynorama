@@ -1,7 +1,7 @@
 <div class="chart-container">
   <div class="container-row">
     <p class="chart-title">Kierunek wiatru</p>
-    <p class="conditions-details">N</p>
+    <p class="conditions-details">{{ currentWindDirection }}</p>
   </div>
   <div class="chart-content">
     <i (click)="scrollLeft()" class="gg-arrow-left-o" [ngClass]="{'arrow-grayed': isLeftArrowGrayedOut}"></i>
