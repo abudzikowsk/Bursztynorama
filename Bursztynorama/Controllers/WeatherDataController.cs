@@ -7,15 +7,9 @@ namespace Bursztynorama.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class WeatherDataController : ControllerBase
+public class WeatherDataController(WeatherHistoricalDataRepository weatherHistoricalDataRepository)
+    : ControllerBase
 {
-    private readonly WeatherHistoricalDataRepository weatherHistoricalDataRepository;
-
-    public WeatherDataController(WeatherHistoricalDataRepository weatherHistoricalDataRepository)
-    {
-        this.weatherHistoricalDataRepository = weatherHistoricalDataRepository;
-    }
-
     [HttpGet]
     [Route("{city}")]
     public async Task<WeatherDataResponse[]> GetWeatherData(Cities city)
