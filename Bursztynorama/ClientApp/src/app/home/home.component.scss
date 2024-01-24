@@ -7,7 +7,18 @@
     "current-conditions map"
     "wind-speed map"
     "air-temperature under-map-container"
-    "sea-temperature under-map-container"
+    "sea-temperature under-map-container";
+
+  @media screen and (max-width: 900px){
+    grid-template-columns: 100%;
+    grid-template-areas:
+      "map"
+      "current-conditions"
+      "wind-speed"
+      "air-temperature"
+      "sea-temperature"
+      "under-map-container"
+  }
 }
 
 .current-conditions {
@@ -16,6 +27,9 @@
 
 .map {
   grid-area: map;
+  @media screen and (max-width: 900px) {
+    height: 300px;
+  }
 }
 
 .air-temperature {

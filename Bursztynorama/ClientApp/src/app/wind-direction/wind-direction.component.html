@@ -4,7 +4,9 @@
     <p class="conditions-details">{{ currentWindDirection }}</p>
   </div>
   <div class="chart-content">
-    <i (click)="scrollLeft()" class="gg-arrow-left-o" [ngClass]="{'arrow-grayed': isLeftArrowGrayedOut}"></i>
+    <div>
+      <i (click)="scrollLeft()" class="gg-arrow-left-o" [ngClass]="{'arrow-grayed': isLeftArrowGrayedOut}"></i>
+    </div>
     <div #windDirectionContainer class="wind-direction-container" (scroll)="checkScrollEnd($event)">
       @for (direction of data | async; track direction.id){
         <div class="direction">
@@ -32,6 +34,8 @@
         </div>
       }
     </div>
-    <i (click)="scrollRight()" class="gg-arrow-right-o" [ngClass]="{'arrow-grayed': isRightArrowGrayedOut}"></i>
+    <div>
+      <i (click)="scrollRight()" class="gg-arrow-right-o" [ngClass]="{'arrow-grayed': isRightArrowGrayedOut}"></i>
+    </div>
   </div>
 </div>
