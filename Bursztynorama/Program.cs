@@ -16,6 +16,7 @@ builder.Services.AddHttpClient();
 builder.Services.AddDbContext<ApplicationDbContext>(o => o.UseSqlite("Data Source=Database.db"));
 builder.Services.AddScoped<WeatherService>();
 builder.Services.AddScoped<WeatherHistoricalDataRepository>();
+builder.Services.AddSingleton<CityMapper>();
 builder.Services.AddHangfire(a => a.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
     .UseSimpleAssemblyNameTypeSerializer()
     .UseRecommendedSerializerSettings()

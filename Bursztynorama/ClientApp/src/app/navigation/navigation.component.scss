@@ -29,6 +29,10 @@
     &:hover {
       color: rgba(251, 250, 234, 0.74);
     }
+    @media screen and (max-width: 600px){
+      font-size: 14px;
+      text-align: center;
+    }
   }
 }
 
@@ -40,6 +44,9 @@
   color: #FBFAEA;
   font-size: 30px;
   font-weight: bold;
+  @media screen and (max-width: 600px) {
+    font-size: 20px;
+  }
 
   a {
     color: #FBFAEA;

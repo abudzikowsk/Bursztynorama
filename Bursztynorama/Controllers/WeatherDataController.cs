@@ -1,13 +1,16 @@
 ﻿using Bursztynorama.Database.Enums;
 using Bursztynorama.Database.Repositories;
 using Bursztynorama.Models;
+using Bursztynorama.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bursztynorama.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class WeatherDataController(WeatherHistoricalDataRepository weatherHistoricalDataRepository)
+public class WeatherDataController(
+    WeatherHistoricalDataRepository weatherHistoricalDataRepository, 
+    CityMapper cityMapper)
     : ControllerBase
 {
     [HttpGet]
@@ -24,7 +27,7 @@ public class WeatherDataController(WeatherHistoricalDataRepository weatherHistor
             {
                 Id = d.Id,
                 Date = d.Date.ToString("dd/MM HH:mm"),
-                City = d.City.ToString(),
+                City = cityMapper.Map(d.City),
                 AirTemperature = Math.Round(d.AirTemperature, 1),
                 WindDirection = d.WindDirection,
                 WindSpeed = Math.Round(d.AirTemperature),

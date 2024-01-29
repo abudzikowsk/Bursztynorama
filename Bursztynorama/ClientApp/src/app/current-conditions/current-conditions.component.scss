@@ -16,6 +16,9 @@
   margin-right: 20px;
   margin-left: 20px;
   margin-top: 20px;
+  @media screen and (max-width: 600px){
+    font-size: 55px;
+  }
 }
 
 .conditions{
@@ -70,4 +73,8 @@
   left: 20px;
   font-size: 40px;
   font-weight: 300;
+
+  @media screen and (max-width: 900px){
+    top: 600px;
+  }
 }

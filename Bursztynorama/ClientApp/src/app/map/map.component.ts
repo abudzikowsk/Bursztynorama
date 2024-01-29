@@ -40,7 +40,7 @@ export class MapComponent implements AfterViewInit{
     const locations = new Map<string, number[]>([
       ['Chłapowo', [54.803650, 18.373520, 0]],
       ['Dziwnów', [54.028190, 14.766910, 1]],
-      ['Gdansk', [54.352050, 18.646370, 2]],
+      ['Gdańsk', [54.352050, 18.646370, 2]],
       ['Gdynia', [54.518890, 18.531880, 3]],
       ['Grzybowo', [54.158920, 15.485570, 4]],
       ['Hel', [54.608140, 18.801300, 5]],
@@ -51,19 +51,20 @@ export class MapComponent implements AfterViewInit{
       ['Nowe Warpno', [53.722560, 14.289610, 10]],
       ['Puck', [54.717900, 18.408410, 11]],
       ['Sopot', [54.441800, 18.560030, 12]],
-      ['Stepnica', [53.651870, 14.625550, 13]],
+      ['Stępnica', [53.651870, 14.625550, 13]],
       ['Tolkmicko', [54.320380, 19.526950, 14]],
       ['Wolin', [53.842140, 14.614650, 15]],
     ]);
 
     locations.forEach((value, key) => {
       const marker = L.marker(latLng(value[0], value[1]), {
-        title: value[2].toString(),
+        title: key,
+        alt: value[2].toString(),
       }).addTo(map);
 
       marker.on('click',  (e) => {
         //@ts-ignore
-        this.cityIdChangedEvent.emit(e.originalEvent.target.title);
+        this.cityIdChangedEvent.emit(e.originalEvent.target.alt);
       });
     });
 
