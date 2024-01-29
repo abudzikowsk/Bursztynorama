@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, EventEmitter, Output} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, HostListener, Output} from '@angular/core';
 import * as L from 'leaflet';
 import {latLng, MapOptions} from "leaflet";
 
@@ -26,6 +26,7 @@ L.Marker.prototype.options.icon = iconDefault;
 })
 export class MapComponent implements AfterViewInit{
   @Output() cityIdChangedEvent = new EventEmitter<string>();
+  private map!: L.Map;
 
   ngAfterViewInit(): void {
     const mapOptions: MapOptions = {
@@ -33,9 +34,9 @@ export class MapComponent implements AfterViewInit{
       zoom: 7
     };
 
-    const map = L.map('map', mapOptions);
+    this.map = L.map('map', mapOptions);
     const layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
-    map.addLayer(layer);
+    this.map.addLayer(layer);
 
     const locations = new Map<string, number[]>([
       ['Chłapowo', [54.803650, 18.373520, 0]],
@@ -60,7 +61,7 @@ export class MapComponent implements AfterViewInit{
       const marker = L.marker(latLng(value[0], value[1]), {
         title: key,
         alt: value[2].toString(),
-      }).addTo(map);
+      }).addTo(this.map);
 
       marker.on('click',  (e) => {
         //@ts-ignore
@@ -69,7 +70,12 @@ export class MapComponent implements AfterViewInit{
     });
 
     setTimeout(() => {
-      map.invalidateSize();
-    }, 0);
+      this.map.invalidateSize();
+    }, 1000);
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.map.invalidateSize();
   }
 }

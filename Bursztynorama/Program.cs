@@ -6,6 +6,7 @@ using Bursztynorama.Services;
 using Hangfire;
 using Hangfire.Storage.SQLite;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,7 +28,7 @@ builder.Services.AddScoped<DeleteOldWeatherDataJob>();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSpaStaticFiles(configuration =>
 {
-    configuration.RootPath = "ClientApp/build";
+    configuration.RootPath = "ClientApp/dist/browser";
 });
 
 var app = builder.Build();
@@ -48,7 +49,6 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
 app.UseRouting();
 
 if (app.Environment.IsDevelopment())
@@ -68,6 +68,17 @@ app.UseEndpoints(opts =>
         name: "default",
         pattern: "{controller}/{action=Index}/{id?}");
 });
+
+app.UseStaticFiles();
+
+if (!app.Environment.IsDevelopment())
+{
+    app.UseStaticFiles(new StaticFileOptions()
+    {
+        FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "ClientApp/dist/browser")),
+        RequestPath = new PathString(string.Empty)
+    });
+}
 
 app.UseSpa(spa =>
 {
