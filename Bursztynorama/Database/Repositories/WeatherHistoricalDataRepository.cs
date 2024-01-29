@@ -23,7 +23,10 @@ public class WeatherHistoricalDataRepository
 
     public async Task Create(WeatherData weatherData)
     {
-        weatherData.Date = DateTime.Now;
+        var utcTime = DateTime.UtcNow;
+        var warsawZone = TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time");
+        var warsawTime = TimeZoneInfo.ConvertTimeFromUtc(utcTime, warsawZone);
+        weatherData.Date = warsawTime;
         applicationDbContext.WeatherHistoricalData.Add(weatherData);
         await applicationDbContext.SaveChangesAsync();
     }
