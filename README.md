@@ -3,11 +3,11 @@
 Are you fascinated by the natural treasures hidden in the Polish beaches? Do you want to learn more about the mysterious and beautiful amber that can be found along the Baltic Sea coast? If so, you are in the right place. Welcome to **Bursztynorama**, the platform that will reveal all the secrets of amber hunting to you. In our “About Us” section, you can find out more about our vision and mission, and how we can help you enjoy this amazing hobby.
 
 ## App
-[Bursztynorama](https://bursztynorama.pl)
+## [Bursztynorama](https://bursztynorama.pl)
 
 ## What is Bursztynorama?
 
-**Bursztynorama** is more than just an application; it is an interactive map that collects and displays all the essential information that affects your chances of finding amber on the Polish coast. We cover 16 strategic cities, where you can access accurate and up-to-date data on the weather conditions, such as sea temperature, air temperature, wind speed, direction, and the current moon phase. These are the key factors that influence the availability and visibility of amber on the beach.
+**Bursztynorama** is more than just an application; it is an interactive map supported by charts that collects and displays all the essential information that affects your chances of finding amber on the Polish coast. We cover 16 strategic cities, where you can access accurate and up-to-date data on the weather conditions, such as sea temperature, air temperature, wind speed, direction, and the current moon phase. These are the key factors that influence the availability and visibility of amber on the beach.
 
 ## Why Choose Bursztynorama?
 
