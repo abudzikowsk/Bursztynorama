@@ -21,52 +21,52 @@
 }
 
 .icon{
-  &--n{
+  &--s{
     transform: rotate(0deg);
   }
-  &--nne{
+  &--ssw{
     transform: rotate(22.5deg);
   }
-  &--ne{
+  &--sw{
     transform: rotate(45deg);
   }
-  &--ene{
+  &--wsw{
     transform: rotate(67.5deg);
   }
-  &--e{
+  &--w{
     transform: rotate(90deg);
   }
-  &--ese{
+  &--ene{
     transform: rotate(112.5deg);
   }
-  &--se{
+  &--nw{
     transform: rotate(135deg);
   }
-  &--sse{
+  &--nnw{
     transform: rotate(157.5deg);
   }
-  &--s{
+  &--n{
     transform: rotate(180deg);
   }
-  &--ssw{
+  &--nne{
     transform: rotate(202.5deg);
   }
-  &--sw{
+  &--ne{
     transform: rotate(225deg);
   }
-  &--wsw{
+  &--ene{
     transform: rotate(247.5deg);
   }
-  &--w{
+  &--e{
     transform: rotate(270deg);
   }
-  &--wnw{
+  &--ese{
     transform: rotate(292.5deg);
   }
-  &--nw{
+  &--se{
     transform: rotate(315deg);
   }
-  &--nnw{
+  &--sse{
     transform: rotate(337.5deg);
   }
   &--n{
