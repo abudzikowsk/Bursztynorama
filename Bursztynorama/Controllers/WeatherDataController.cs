@@ -30,7 +30,7 @@ public class WeatherDataController(
                 City = cityMapper.Map(d.City),
                 AirTemperature = Math.Round(d.AirTemperature, 1),
                 WindDirection = d.WindDirection,
-                WindSpeed = Math.Round(d.AirTemperature),
+                WindSpeed = Math.Round(d.WindSpeed),
                 SeaTemperature = d.SeaTemperature.HasValue ? Math.Round(d.SeaTemperature.Value, 1) : 0,
                 MoonPhase = d.MoonPhase
             });
