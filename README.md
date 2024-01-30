@@ -2,7 +2,7 @@
 
 Are you fascinated by the natural treasures hidden in the Polish beaches? Do you want to learn more about the mysterious and beautiful amber that can be found along the Baltic Sea coast? If so, you are in the right place. Welcome to **Bursztynorama**, the platform that will reveal all the secrets of amber hunting to you. In our “About Us” section, you can find out more about our vision and mission, and how we can help you enjoy this amazing hobby.
 
-##### [Bursztynorama](https://bursztynorama.pl)
+### [Bursztynorama](https://bursztynorama.pl)
 
 ## What is Bursztynorama?
 
