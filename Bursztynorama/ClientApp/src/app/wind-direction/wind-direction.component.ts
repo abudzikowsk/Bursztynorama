@@ -1,5 +1,4 @@
-import {AfterViewInit, Component, ElementRef, Input, ViewChild} from '@angular/core';
-import { WindDirectionModel } from '../models/wind-direction.model';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {AsyncPipe, NgClass, NgOptimizedImage} from "@angular/common";
 import {Observable} from "rxjs";
 import {WeatherDataResponse} from "../models/weather-data.response";
@@ -15,7 +14,7 @@ import {WeatherDataResponse} from "../models/weather-data.response";
   templateUrl: './wind-direction.component.html',
   styleUrl: './wind-direction.component.scss'
 })
-export class WindDirectionComponent implements AfterViewInit {
+export class WindDirectionComponent implements OnInit {
   @Input() public data!: Observable<WeatherDataResponse[]>;
   @ViewChild('windDirectionContainer') windDirectionContainer!: ElementRef;
   isLeftArrowGrayedOut = false;
@@ -25,11 +24,11 @@ export class WindDirectionComponent implements AfterViewInit {
   ngOnInit(): void {
     this.data.subscribe((data) => {
       this.currentWindDirection = data[data.length - 1].windDirection;
-    });
-  }
 
-  ngAfterViewInit(): void {
-      this.windDirectionContainer.nativeElement.scrollLeft = this.windDirectionContainer.nativeElement.scrollWidth;
+      setTimeout(() => {
+        this.windDirectionContainer.nativeElement.scrollLeft = this.windDirectionContainer.nativeElement.scrollWidth;
+      },0);
+    });
   }
 
   scrollLeft() {
