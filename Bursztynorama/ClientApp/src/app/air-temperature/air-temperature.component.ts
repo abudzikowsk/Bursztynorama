@@ -5,12 +5,14 @@ import Chart from "chart.js/auto";
 import {getChartConfig} from "../config/chart.config";
 import {WeatherDataResponse} from "../models/weather-data.response";
 import {Observable} from "rxjs";
+import {PopupComponent} from "../popup/popup.component";
 
 @Component({
   selector: 'app-air-temperature',
   standalone: true,
   imports: [
-    RouterOutlet
+    RouterOutlet,
+    PopupComponent
   ],
   templateUrl: './air-temperature.component.html',
   styleUrl: './air-temperature.component.scss'
