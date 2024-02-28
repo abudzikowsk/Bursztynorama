@@ -1,11 +1,14 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {WeatherDataResponse} from "../models/weather-data.response";
+import {PopupComponent} from "../popup/popup.component";
 
 @Component({
   selector: 'app-moon-phase',
   standalone: true,
-  imports: [],
+  imports: [
+    PopupComponent
+  ],
   templateUrl: './moon-phase.component.html',
   styleUrl: './moon-phase.component.scss'
 })

@@ -1,7 +1,9 @@
 <div class="chart-container">
   <div class="container-row">
-    <p class="chart-title">Kierunek wiatru</p>
-    <p class="conditions-details">{{ currentWindDirection }}</p>
+    <div class="chart-title">
+      <p class="chart-title-margin">Kierunek wiatru</p>
+      <app-popup [text]="'Wiatr północny, połnocno-wschodni i północno-zachodni sprzyja wyrzucaniu bursztynu na brzeg. Jednak najbardziej korzystny scenariusz to, gdy wiatr najpierw wieje z południa, a następnie z północy. W takim przypadku fala kontruje, co sprzyja wyrzucaniu bursztynu na brzeg.'"></app-popup>
+    </div>
   </div>
   <div class="chart-content">
     <div>

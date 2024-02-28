@@ -2,15 +2,17 @@ import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {AsyncPipe, NgClass, NgOptimizedImage} from "@angular/common";
 import {Observable} from "rxjs";
 import {WeatherDataResponse} from "../models/weather-data.response";
+import {PopupComponent} from "../popup/popup.component";
 
 @Component({
   selector: 'app-wind-direction',
   standalone: true,
-  imports: [
-    NgOptimizedImage,
-    NgClass,
-    AsyncPipe
-  ],
+    imports: [
+        NgOptimizedImage,
+        NgClass,
+        AsyncPipe,
+        PopupComponent
+    ],
   templateUrl: './wind-direction.component.html',
   styleUrl: './wind-direction.component.scss'
 })

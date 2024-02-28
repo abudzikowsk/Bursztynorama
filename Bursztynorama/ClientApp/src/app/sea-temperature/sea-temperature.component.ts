@@ -4,11 +4,14 @@ import Chart from "chart.js/auto";
 import {getChartConfig} from "../config/chart.config";
 import {Observable} from "rxjs";
 import {WeatherDataResponse} from "../models/weather-data.response";
+import {PopupComponent} from "../popup/popup.component";
 
 @Component({
   selector: 'app-sea-temperature',
   standalone: true,
-  imports: [],
+  imports: [
+    PopupComponent
+  ],
   templateUrl: './sea-temperature.component.html',
   styleUrl: './sea-temperature.component.scss'
 })

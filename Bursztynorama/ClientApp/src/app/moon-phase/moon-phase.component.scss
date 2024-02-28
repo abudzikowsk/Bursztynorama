@@ -6,14 +6,24 @@
 .title{
   font-size: 30px;
   font-weight: 600;
-  margin: 20px;
   color: #FBFAEA;
-  border-top: 2px solid #FBFAEA;
-  padding-top: 20px;
 }
 
 .chart-container{
   color: #FBFAEA;
   display: flex;
   flex-direction: column;
+}
+
+.chart-title {
+  display: flex;
+  align-items: flex-start;
+  border-top: 2px solid #FBFAEA;
+  padding-top: 20px;
+  margin: 20px;
+  font-weight: 600;
+}
+
+.chart-title-margin {
+  margin-right: 10px;
 }

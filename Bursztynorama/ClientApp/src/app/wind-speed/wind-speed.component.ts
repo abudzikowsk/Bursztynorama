@@ -4,11 +4,14 @@ import {ChartConfiguration} from "chart.js";
 import {getChartConfig} from "../config/chart.config";
 import {Observable} from "rxjs";
 import {WeatherDataResponse} from "../models/weather-data.response";
+import {PopupComponent} from "../popup/popup.component";
 
 @Component({
   selector: 'app-wind-speed',
   standalone: true,
-  imports: [],
+    imports: [
+        PopupComponent
+    ],
   templateUrl: './wind-speed.component.html',
   styleUrl: './wind-speed.component.scss'
 })
