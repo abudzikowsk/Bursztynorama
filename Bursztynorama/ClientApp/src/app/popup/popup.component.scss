@@ -17,14 +17,18 @@
   color: #2E3C47;
   text-align: center;
   border-radius: 6px;
-  padding: 8px 0;
+  padding: 10px;
   position: absolute;
   z-index: 999;
   bottom: 125%;
   left: 50%;
-  margin-left: -130px;
+  margin-left: -140px;
   font-size: 13px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+
+  @media screen and (max-width: 400px){
+    width: 200px;
+  }
 }
 
 /* Popup arrow */
@@ -37,6 +41,10 @@
   border-width: 5px;
   border-style: solid;
   border-color: #FBFAEA transparent transparent transparent;
+
+  @media screen and (max-width: 400px){
+    left: 63.5%;
+  }
 }
 
 /* Toggle this class when clicking on the popup container (hide and show the popup) */

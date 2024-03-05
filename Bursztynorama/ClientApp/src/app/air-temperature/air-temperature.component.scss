@@ -8,6 +8,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 
 .conditions-details{
@@ -16,12 +17,10 @@
   color: #82C6D4;
 }
 
-.chart-title {
-  display: flex;
-  align-items: flex-start;
-}
-
 .chart-title-margin {
   margin-right: 10px;
 }
 
+app-popup {
+  margin-right: 20px;
+}

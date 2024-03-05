@@ -1,10 +1,9 @@
 <div class="chart-container">
   <div class="container-row">
-    <div class="chart-title">
-      <p class="chart-title-margin">Temperatura morza</p>
-      <app-popup [text]="'W miarę spadku temperatury wody morskiej, jej gęstość zwiększa się, co sprzyja procesowi wynoszenia bursztynu na brzeg.'"></app-popup>
-    </div>
+    <p class="chart-title-margin">Temperatura morza</p>
+    <app-popup
+      [text]="'W miarę spadku temperatury wody morskiej, jej gęstość zwiększa się, co sprzyja procesowi wynoszenia bursztynu na brzeg.'"></app-popup>
     <p class="conditions-details">{{ currentSeaTemperature }}°C</p>
   </div>
-  <canvas  id="sea-temperature-chart" >{{ chart }}</canvas>
+  <canvas id="sea-temperature-chart">{{ chart }}</canvas>
 </div>

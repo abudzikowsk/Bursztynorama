@@ -1,10 +1,9 @@
 <div class="chart-container">
   <div class="container-row">
-    <div class="chart-title">
-      <p class="chart-title-margin">Temperatura powietrza</p>
-      <app-popup [text]="'Temperatura powietrza wpływa na temperaturę morza, a im jest ono zimniejsze, tym staje się gęstsze. To sprzyja wynoszeniu bursztynu na brzeg.'"></app-popup>
-    </div>
+    <p class="chart-title-margin">Temperatura powietrza</p>
+    <app-popup
+      [text]="'Temperatura powietrza wpływa na temperaturę morza, a im jest ono zimniejsze, tym staje się gęstsze. To sprzyja wynoszeniu bursztynu na brzeg.'"></app-popup>
     <p class="conditions-details">{{ currentTemperature }}°C</p>
   </div>
-  <canvas  id="air-temperature-chart" >{{ chart }}</canvas>
+  <canvas id="air-temperature-chart">{{ chart }}</canvas>
 </div>
