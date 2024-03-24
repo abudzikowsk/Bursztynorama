@@ -1,9 +1,11 @@
 <div class="chart-container">
   <div class="container-row">
-    <p class="chart-title-margin">Temperatura morza</p>
-    <app-popup
-      [text]="'W miarę spadku temperatury wody morskiej, jej gęstość zwiększa się, co sprzyja procesowi wynoszenia bursztynu na brzeg.'"></app-popup>
-    <p class="conditions-details">{{ currentSeaTemperature }}°C</p>
+    <div class="description">
+      <p class="chart-title-margin">Temperatura morza</p>
+      <app-popup
+        [text]="'W miarę spadku temperatury wody morskiej, jej gęstość zwiększa się, co sprzyja procesowi wynoszenia bursztynu na brzeg.'"></app-popup>
+    </div>
+   <p class="conditions-details">{{ currentSeaTemperature }}°C</p>
   </div>
   <canvas id="sea-temperature-chart">{{ chart }}</canvas>
 </div>

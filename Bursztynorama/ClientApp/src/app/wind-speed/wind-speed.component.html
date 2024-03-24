@@ -1,8 +1,10 @@
 <div class="chart-container">
   <div class="container-row">
+    <div class="description">
       <p class="chart-title-margin">Prędkość wiatru</p>
       <app-popup [text]="'Im silniejszy wiatr, tym bardziej wzburzone morze i większa szansa na znalezienie bursztynu. Aby mówić o sztormie, wiatr musi wiać z prędkością powyżej 60 km/h. Podczas sztormu bursztyny, które zalegały na dnie, wydostają się na powierzchnię spod drewna i wodorostów. Czas zaraz po sztormie to doskonały moment na poszukiwanie bursztynu.'"></app-popup>
-    <p class="conditions-details">{{ currentWindSpeed }}km/h</p>
+    </div>
+     <p class="conditions-details">{{ currentWindSpeed }}km/h</p>
   </div>
   <canvas  id="wind-speed-chart" >{{ chart }}</canvas>
 </div>
