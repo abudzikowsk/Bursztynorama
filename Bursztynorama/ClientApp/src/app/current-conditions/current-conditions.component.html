@@ -3,24 +3,23 @@
   <div class="conditions">
     <div class="conditions-details">
       <div class="conditions-details-row">
-        <p>Aktualna temperatura powietrza</p>
-        <p class="conditions-details-value">2°C</p>
-      </div>
-      <div class="conditions-details-row">
-        <p>Aktualna temperatura morza</p>
-        <p class="conditions-details-value">3°C</p>
-      </div>
-      <div class="conditions-details-row">
         <p>Aktualny kierunek wiatru</p>
-        <p class="conditions-details-value">N</p>
+        <p *ngIf="data" class="conditions-details-value">{{data.windDirection}}</p>
       </div>
       <div class="conditions-details-row">
         <p>Aktualna prędkość wiatru</p>
-        <p class="conditions-details-value">55km/h</p>
+        <p *ngIf="data" class="conditions-details-value">{{data.windSpeed}}km/h</p>
+      </div>
+      <div class="conditions-details-row">
+        <p>Aktualna temperatura morza</p>
+        <p *ngIf="data" class="conditions-details-value">{{data.seaTemperature}}°C</p>
+      </div>
+      <div class="conditions-details-row">
+        <p>Aktualna temperatura powietrza</p>
+        <p *ngIf="data" class="conditions-details-value">{{data.airTemperature}}°C</p>
       </div>
     </div>
-    <p class="chance-percent">90%</p>
+    <p *ngIf="prediction$ | async as prediction" class="chance-percent">{{prediction}}%</p>
   </div>
-  <p class="description">Szansa na znalezienie bursztynu to imponujące 90%! Nie trać czasu i ruszaj po bursztyn!</p>
-  <p class="comming-soon">Dostępne wkrótce...</p>
+  <p *ngIf="prediction$ | async as prediction" class="description">Szansa na znalezienie bursztynu to {{prediction}}%!</p>
 </div>

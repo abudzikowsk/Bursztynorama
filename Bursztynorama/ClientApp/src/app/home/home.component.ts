@@ -38,6 +38,7 @@ export class HomeComponent implements OnInit{
   public data: Subject<WeatherDataResponse[]> = new Subject<WeatherDataResponse[]>();
   public moonPhase: Subject<number> = new Subject<number>();
   public city: Subject<string> = new Subject<string>();
+  public prediction: Subject<number> = new Subject<number>();
 
   private readonly httpClient = inject(HttpClient);
 
@@ -49,8 +50,12 @@ export class HomeComponent implements OnInit{
         this.moonPhase.next(latestData.moonPhase);
         this.city.next(latestData.city);
       });
-  }
 
+    this.httpClient.get<number>('api/Prediction/3')
+      .subscribe((data) => {
+        this.prediction.next(data);
+      });
+  }
 
   changeCity(cityId: string){
     this.httpClient.get<WeatherDataResponse[]>('api/WeatherData/' + cityId)
@@ -59,6 +64,11 @@ export class HomeComponent implements OnInit{
         const latestData = data[data.length - 1];
         this.moonPhase.next(latestData.moonPhase);
         this.city.next(latestData.city);
+      });
+
+    this.httpClient.get<number>('api/Prediction/' + cityId)
+      .subscribe((data) => {
+        this.prediction.next(data);
       });
   }
 }
