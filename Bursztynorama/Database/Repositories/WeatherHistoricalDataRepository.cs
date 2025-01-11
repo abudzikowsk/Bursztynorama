@@ -38,4 +38,12 @@ public class WeatherHistoricalDataRepository
         applicationDbContext.WeatherHistoricalData.RemoveRange(oldData);
         await applicationDbContext.SaveChangesAsync();
     }
+    
+    public async Task<WeatherData?> GetLastData(Cities city)
+    {
+        return await applicationDbContext.WeatherHistoricalData
+            .Where(i => i.City == city)
+            .OrderByDescending(i => i.Date)
+            .FirstOrDefaultAsync();
+    }
 }
