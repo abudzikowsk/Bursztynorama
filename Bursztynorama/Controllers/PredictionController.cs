@@ -23,7 +23,7 @@ public class PredictionController(
             windSpeedPercentage = 0;
         }
         else if (data.WindSpeed >= 10 && data.WindSpeed < 20)
-        {
+        { 
             windSpeedPercentage = 30;
         }
         else if (data.WindSpeed >= 20 && data.WindSpeed < 30)
@@ -42,30 +42,7 @@ public class PredictionController(
         {
             windSpeedPercentage = 100;
         }
-        
-        //-18 -1; 0 - 10; 10 - 20; 20 - 30; 30+ 
-        int airTemperaturePercentage = 0;
-        if (data.AirTemperature < 0)
-        {
-            airTemperaturePercentage = 80;
-        }
-        else if (data.AirTemperature >= 0 && data.AirTemperature < 10)
-        {
-            airTemperaturePercentage = 60;
-        }
-        else if (data.AirTemperature >= 10 && data.AirTemperature < 20)
-        {
-            airTemperaturePercentage = 40;
-        }
-        else if (data.AirTemperature >= 20 && data.AirTemperature < 30)
-        {
-            airTemperaturePercentage = 20;
-        }
-        else
-        {
-            airTemperaturePercentage = 0;
-        }
-        
+     
         // >4; 4-6; 6-10; 10-18; <18
         int seaTemperaturePercentage = 0;
         if (data.SeaTemperature.HasValue)
@@ -76,7 +53,7 @@ public class PredictionController(
             }
             else if (data.SeaTemperature.Value >= 4 && data.SeaTemperature.Value < 6)
             {
-                seaTemperaturePercentage = 60;
+                seaTemperaturePercentage = 70;
             }
             else if (data.SeaTemperature.Value >= 6 && data.SeaTemperature.Value < 10)
             {
@@ -107,7 +84,7 @@ public class PredictionController(
             windDirectionPercentage = 20;
         }
         
-        int predictionPercentage = (windSpeedPercentage + airTemperaturePercentage + seaTemperaturePercentage + windDirectionPercentage) / 4;
+        int predictionPercentage = (windSpeedPercentage + seaTemperaturePercentage + windDirectionPercentage) / 3;
         
         return Ok(predictionPercentage);
     }
