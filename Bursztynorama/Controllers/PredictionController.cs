@@ -71,11 +71,17 @@ public class PredictionController(
         
         //N NNE NE ENE E = 100; ESE NNW = 60; S SSW SW WSW W SE SSE WNW NW = 20
         int windDirectionPercentage = 0;
-        if (data.WindDirection == "N" || data.WindDirection == "NNE" || data.WindDirection == "NE" || data.WindDirection == "ENE" || data.WindDirection == "E")
+        if (data.WindDirection == "N" 
+            || data.WindDirection == "NNE" 
+            || data.WindDirection == "NE" 
+            || data.WindDirection == "ENE" 
+            || data.WindDirection == "E"
+            || data.WindDirection == "NNW")
         {
             windDirectionPercentage = 100;
         }
-        else if (data.WindDirection == "ESE" || data.WindDirection == "NNW")
+        else if (data.WindDirection == "E"
+                 || data.WindDirection == "NW")
         {
             windDirectionPercentage = 60;
         }
