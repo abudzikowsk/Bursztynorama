@@ -42,6 +42,8 @@ export class WindSpeedComponent implements OnInit {
     };
 
     const config = getChartConfig(data);
+    // @ts-ignore
+    config.options.scales['y'].title.text = 'km/h';
 
     this.chart = new Chart("wind-speed-chart", config);
   }
