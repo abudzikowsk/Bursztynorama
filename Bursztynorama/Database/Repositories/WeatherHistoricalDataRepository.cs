@@ -39,10 +39,10 @@ public class WeatherHistoricalDataRepository
         await applicationDbContext.SaveChangesAsync();
     }
     
-    public async Task<WeatherData?> GetLastData(Cities city)
+    public async Task<WeatherData?> GetData24HoursBack(Cities city)
     {
         return await applicationDbContext.WeatherHistoricalData
-            .Where(i => i.City == city)
+            .Where(i => i.City == city && i.Date.Date <= DateTime.Now.AddDays(-1))
             .OrderByDescending(i => i.Date)
             .FirstOrDefaultAsync();
     }

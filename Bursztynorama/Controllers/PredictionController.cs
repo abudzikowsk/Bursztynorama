@@ -16,7 +16,7 @@ public class PredictionController(
     [Route("{city}")]
     public async Task<IActionResult> GetPrediction(Cities city)
     {
-        var data = await weatherHistoricalDataRepository.GetLastData(city);
+        var data = await weatherHistoricalDataRepository.GetData24HoursBack(city);
         if (data == null)
         {
             return NotFound();
