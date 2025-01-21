@@ -2,7 +2,7 @@
 
 public class WeatherDataResponse
 {
-	public int Id { get; set; }
+	public string Id { get; set; }
 	public string Date { get; set; }
 	public string City { get; set; }
 	public double AirTemperature { get; set; }

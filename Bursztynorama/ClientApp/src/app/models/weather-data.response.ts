@@ -1,5 +1,5 @@
 export interface WeatherDataResponse {
-  id: number;
+  id: string;
   date: string;
   city: string;
   airTemperature: number;

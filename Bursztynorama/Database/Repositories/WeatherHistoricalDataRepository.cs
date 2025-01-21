@@ -1,6 +1,8 @@
 ﻿using Bursztynorama.Database.Entities;
 using Bursztynorama.Database.Enums;
 using Microsoft.EntityFrameworkCore;
+using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace Bursztynorama.Database.Repositories;
 
@@ -8,9 +10,12 @@ public class WeatherHistoricalDataRepository
 {
     private readonly ApplicationDbContext applicationDbContext;
 
-    public WeatherHistoricalDataRepository(ApplicationDbContext applicationDbContext)
+    public WeatherHistoricalDataRepository(IConfiguration configuration)
     {
-        this.applicationDbContext = applicationDbContext; 
+        var connectionString = configuration.GetConnectionString("DefaultConnection");
+        var mongoClient = new MongoClient(connectionString);
+        this.applicationDbContext = ApplicationDbContext.Create(mongoClient.GetDatabase("Bursztynorama"));
+        applicationDbContext.Database.EnsureCreated();
     }
 
     public async Task<WeatherData[]> GetAllByCity(Cities city)
@@ -27,6 +32,7 @@ public class WeatherHistoricalDataRepository
         var warsawZone = TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time");
         var warsawTime = TimeZoneInfo.ConvertTimeFromUtc(utcTime, warsawZone);
         weatherData.Date = warsawTime;
+        weatherData.Id = ObjectId.GenerateNewId().ToString();
         applicationDbContext.WeatherHistoricalData.Add(weatherData);
         await applicationDbContext.SaveChangesAsync();
     }

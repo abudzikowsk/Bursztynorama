@@ -1,20 +1,16 @@
-﻿using Bursztynorama.Database;
-using Bursztynorama.Database.Repositories;
+﻿using Bursztynorama.Database.Repositories;
 using Bursztynorama.Filters;
 using Bursztynorama.Jobs;
 using Bursztynorama.Services;
 using Hangfire;
-using Hangfire.Storage.SQLite;
-using Microsoft.EntityFrameworkCore;
+using Hangfire.Mongo;
+using Hangfire.Mongo.Migration.Strategies;
 using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
-builder.Services.AddDbContext<ApplicationDbContext>(o => o.UseSqlite("Data Source=Database.db"));
 builder.Services.AddScoped<WeatherService>();
 builder.Services.AddScoped<PredictionService>();
 builder.Services.AddScoped<WeatherHistoricalDataRepository>();
@@ -22,7 +18,17 @@ builder.Services.AddSingleton<CityMapper>();
 builder.Services.AddHangfire(a => a.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
     .UseSimpleAssemblyNameTypeSerializer()
     .UseRecommendedSerializerSettings()
-    .UseSQLiteStorage());
+    .UseMongoStorage(
+        builder.Configuration.GetConnectionString("DefaultConnection"), 
+        "Hangfire",
+        new MongoStorageOptions
+        {
+            MigrationOptions = new MongoMigrationOptions
+            {
+                MigrationStrategy = new MigrateMongoMigrationStrategy(),
+            },
+            CheckQueuedJobsStrategy = CheckQueuedJobsStrategy.TailNotificationsCollection
+        }));
 builder.Services.AddHangfireServer();
 builder.Services.AddScoped<GetWeatherDataJob>();
 builder.Services.AddScoped<DeleteOldWeatherDataJob>();
@@ -33,14 +39,6 @@ builder.Services.AddSpaStaticFiles(configuration =>
 });
 
 var app = builder.Build();
-
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-
-    var context = services.GetRequiredService<ApplicationDbContext>();
-    context.Database.Migrate();
-}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
