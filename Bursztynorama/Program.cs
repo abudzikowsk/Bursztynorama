@@ -1,10 +1,12 @@
-﻿using Bursztynorama.Database.Repositories;
+﻿using Bursztynorama.Database;
+using Bursztynorama.Database.Repositories;
 using Bursztynorama.Filters;
 using Bursztynorama.Jobs;
 using Bursztynorama.Services;
 using Hangfire;
 using Hangfire.Mongo;
 using Hangfire.Mongo.Migration.Strategies;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +17,7 @@ builder.Services.AddScoped<WeatherService>();
 builder.Services.AddScoped<PredictionService>();
 builder.Services.AddScoped<WeatherHistoricalDataRepository>();
 builder.Services.AddSingleton<CityMapper>();
+builder.Services.AddDbContext<ApplicationDbContext>(opt => opt.UseMongoDB(builder.Configuration.GetConnectionString("DefaultConnection") ?? "", "Bursztynorama"));
 builder.Services.AddHangfire(a => a.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
     .UseSimpleAssemblyNameTypeSerializer()
     .UseRecommendedSerializerSettings()

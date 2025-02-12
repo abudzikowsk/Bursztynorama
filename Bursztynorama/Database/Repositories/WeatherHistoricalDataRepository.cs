@@ -10,11 +10,9 @@ public class WeatherHistoricalDataRepository
 {
     private readonly ApplicationDbContext applicationDbContext;
 
-    public WeatherHistoricalDataRepository(IConfiguration configuration)
+    public WeatherHistoricalDataRepository(ApplicationDbContext applicationDbContext)
     {
-        var connectionString = configuration.GetConnectionString("DefaultConnection");
-        var mongoClient = new MongoClient(connectionString);
-        this.applicationDbContext = ApplicationDbContext.Create(mongoClient.GetDatabase("Bursztynorama"));
+        this.applicationDbContext = applicationDbContext;
         applicationDbContext.Database.EnsureCreated();
     }
 
