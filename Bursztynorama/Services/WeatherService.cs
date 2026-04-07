@@ -10,8 +10,7 @@ namespace Bursztynorama.Services;
 public class WeatherService
 {
     private readonly HttpClient httpClient;
-    private readonly Regex regexSeaTemperature = new(@"([0-9]+.?[0-9]?)&deg;C");
-    private readonly string urlSeaTemperature = "https://www.seatemperature.org/europe/poland/{0}.htm";
+    private readonly string urlMarineSeaTemperature = "https://marine-api.open-meteo.com/v1/marine?latitude={0}&longitude={1}&current=sea_surface_temperature&timezone=auto&cell_selection=sea";
     private readonly Regex regexMoonPhase = new(@"It is currently (\d*.?\d*)");
     private readonly string urlMoonPhase = "https://phasesmoon.com";
     private readonly Dictionary<Cities, double[]> cityToLocation = new()
@@ -34,26 +33,6 @@ public class WeatherService
         {Cities.Wolin, [53.842140, 14.614650] }
     };
     
-    private readonly Dictionary<Cities, string> cityToApiCity = new()
-    {
-        {Cities.Chlapowo, "chlapowo" },
-        {Cities.Dziwnow, "dziwnow" },
-        {Cities.Gdansk, "gdask" },
-        {Cities.Gdynia, "gdynia" },
-        {Cities.Grzybowo, "grzybowo" },
-        {Cities.Hel, "hel" },
-        {Cities.KamienPomorski, "kamien-pomorski" },
-        {Cities.KrynicaMorska, "krynica-morska" },
-        {Cities.Mielno, "mielno" },
-        {Cities.Mrzezyno, "mrzezyno" },
-        {Cities.NoweWarpno, "nowe-warpno" },
-        {Cities.Puck, "puck" },
-        {Cities.Sopot, "sopot" },
-        {Cities.Stepnica, "stepnica" },
-        {Cities.Tolkmicko, "tolkmicko"},
-        {Cities.Wolin, "wolin"}
-    };
-    
     public WeatherService(HttpClient httpClient)
     {
         this.httpClient = httpClient;
@@ -64,28 +43,22 @@ public class WeatherService
         var location = cityToLocation[city];
         var response = await httpClient.GetAsync($"https://api.openweathermap.org/data/2.5/weather?lat={location[0]}&lon={location[1]}&appid=e786afb775c09fd77cf5e682e1901660&units=metric");
         var stringResponse = await response.Content.ReadAsStringAsync();
-        return JsonSerializer.Deserialize<OpenWeatherResponse>(stringResponse, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        return JsonSerializer.Deserialize<OpenWeatherResponse>(stringResponse, new JsonSerializerOptions { PropertyNameCaseInsensitive = true })!;
     }
 
     public async Task<double?> GetSeaTemperature(Cities city)
     {
-        var apiCity = cityToApiCity[city];
-        var cityUrl = string.Format(urlSeaTemperature, apiCity);
-        var html = await httpClient.GetStringAsync(cityUrl);
-        var htmlDocument = new HtmlDocument();
-        htmlDocument.LoadHtml(html);
+        var location = cityToLocation[city];
+        var requestUrl = string.Format(CultureInfo.InvariantCulture, urlMarineSeaTemperature, location[0], location[1]);
+        var response = await httpClient.GetStringAsync(requestUrl);
 
-        var node = htmlDocument.DocumentNode.SelectSingleNode("//*[@id='sea-temperature']");
+        using var document = JsonDocument.Parse(response);
 
-        if (node != null)
+        if (document.RootElement.TryGetProperty("current", out var currentElement)
+            && currentElement.TryGetProperty("sea_surface_temperature", out var temperatureElement)
+            && temperatureElement.TryGetDouble(out var temperature))
         {
-            var temperatureUnparsed = node.ChildNodes[1].InnerText;
-            var match = regexSeaTemperature.Match(temperatureUnparsed);
-
-            if (double.TryParse(match.Groups[1].Value, NumberStyles.Any, CultureInfo.InvariantCulture, out var temperature))
-            {
-                return Math.Round(temperature, 2);
-            }
+            return Math.Round(temperature, 2);
         }
 
         return null;
